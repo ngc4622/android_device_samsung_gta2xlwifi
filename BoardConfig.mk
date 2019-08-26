@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2015-2016 The Android Open-Source Project
+# Copyright (C) 2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -64,20 +65,7 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# TWRP specific build flags
-RECOVERY_VARIANT := twrp
-TW_THEME := portrait_hdpi
-RECOVERY_SDCARD_ON_DATA := true
-TW_TARGET_USES_QCOM_BSP := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
-TW_MAX_BRIGHTNESS := 255
-TW_DEFAULT_BRIGHTNESS := 150
-TW_NO_REBOOT_BOOTLOADER := true
-TW_HAS_DOWNLOAD_MODE := true
-TW_INCLUDE_NTFS_3G := true
-TW_EXCLUDE_SUPERSU := true
-TW_EXTRA_LANGUAGES := true
-TW_USE_NEW_MINADBD := true
-TW_INCLUDE_CRYPTO := true
+#TWRP
+ifeq ($(WITH_TWRP),true)
+-include $(DEVICE_PATH)/twrp.mk
+endif
